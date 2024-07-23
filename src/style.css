@@ -75,6 +75,7 @@ button:focus {
 /* --------- */
 /* Navbar Section  */
 /* --------- */
+/* Navbar Section */
 .sticky {
   background-color: #1b1a2ea9 !important;
   transition: all 0.3s ease-out 0s !important;
@@ -85,64 +86,13 @@ button:focus {
 .navbar {
   position: fixed !important;
   transition: all 0.3s ease-out 0s !important;
-  padding: 0.1rem 2rem !important;
+  padding: 0.1rem 1rem !important; /* Reduced padding */
   font-size: 1.2rem !important;
-}
-
-.navbar-toggler {
-  position: relative !important;
-  background-color: transparent !important;
-  border-color: transparent !important;
-}
-
-.navbar-toggler span {
-  display: block !important;
-  background-color: #be50f4 !important;
-  height: 4px !important;
-  width: 27px !important;
-  margin-top: 3px !important;
-  margin-bottom: 3px !important;
-  transform: rotate(0deg) !important;
-  left: 0 !important;
-  opacity: 1 !important;
-}
-
-.navbar-toggler:focus,
-.navbar-toggler:active {
-  outline: 0 !important;
-}
-
-.navbar-toggler span:nth-child(1),
-.navbar-toggler span:nth-child(3) {
-  transition: transform 0.35s ease-in-out !important;
-  transition: transform 0.35s ease-in-out !important;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(1) {
-  position: absolute !important;
-  left: 12px !important;
-  top: 10px !important;
-  transform: rotate(135deg) !important;
-  opacity: 0.9 !important;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(2) {
-  height: 12px !important;
-  visibility: hidden !important;
-  background-color: transparent !important;
-}
-
-.navbar-toggler:not(.collapsed) span:nth-child(3) {
-  position: absolute !important;
-  left: 12px !important;
-  top: 10px !important;
-  transform: rotate(-135deg) !important;
-  opacity: 0.9 !important;
 }
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 0.1rem 1rem !important;
+    padding: 0.1rem 0.5rem !important; /* Further reduce padding on mobile */
     font-size: 1rem !important;
     background-color: #181a27 !important;
   }
@@ -150,34 +100,35 @@ button:focus {
     display: none !important;
   }
 }
+
 .navbar-brand {
   color: rgb(250, 250, 250) !important;
 }
 
 .logo {
-  height: 10.4em !important;
-  width: 10.5em !important;
+  height: 6em !important; /* Reduced height */
+  width: 6em !important; /* Adjusted width proportionally */
 }
 
 .navbar-nav .nav-link {
   color: white !important;
-  padding-right: 1rem !important;
-  padding-left: 1rem !important;
+  padding-right: 0.5rem !important; /* Adjusted padding */
+  padding-left: 0.5rem !important; /* Adjusted padding */
 }
 
 .nav-link {
-  padding: 0.8rem 1rem !important;
+  padding: 0.5rem 0.5rem !important; /* Reduced padding */
 }
 
 @media (max-width: 767px) {
   .nav-link {
-    padding: 0.7rem 1rem !important;
+    padding: 0.4rem 0.4rem !important; /* Further reduced padding on mobile */
   }
 }
 
 .navbar-nav .nav-item {
   position: relative;
-  margin-left: 20px;
+  margin-left: 10px; /* Adjusted margin */
 }
 
 .navbar-nav .nav-item a {
