@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import yad2Image from '../../Assets/Projects/yad2.png';
 
 function ProjectCards(props) {
   return (
