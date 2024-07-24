@@ -169,8 +169,8 @@ button:focus {
 }
 
 .logo {
-  height: 6em !important; /* Reduced height */
-  width: 6em !important; /* Adjusted width proportionally */
+  height: 10em !important; /* Reduced height */
+  width: 10em !important; /* Adjusted width proportionally */
 }
 
 .navbar-nav .nav-link {
