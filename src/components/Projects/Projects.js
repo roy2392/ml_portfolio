@@ -14,6 +14,7 @@ import kafka from '../../Assets/Projects//kafka.png';
 import loan from '../../Assets/Projects//loan.png';
 import book from '../../Assets/Projects//book.jpg';
 import cat from '../../Assets/Projects//cat.gif';
+import got from '../../Assets/Projects//GOT.png';
 
 function Projects() {
   return (
@@ -34,6 +35,17 @@ function Projects() {
               title="Chat with a Website via LLM Agent"
               description="LangChain Chatbot with Streamlit GUI"
               ghLink="https://github.com/roy2392/chat-with-websites-agent"
+              
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={got}
+              isBlog={false}
+              title="Chat-GPThrones - Chatbot with Game of Thrones Graph Knowledge-base"
+              description="GenAI-powered chat application that leverages Neo4j to build a knowledge base graph from the Game of Thrones books."
+              ghLink="https://github.com/roy2392/chat-gpthornes"
               
             />
           </Col>
