@@ -33,7 +33,7 @@ function Projects() {
               imgPath={websitechat}
               isBlog={false}
               title="Chat with a Website via LLM Agent"
-              description="LangChain Chatbot with Streamlit GUI"
+              description="An AI-powered tool that allows users to interact with websites through natural language conversations. It combines Large Language Models with web scraping to navigate sites, extract information, and answer queries about web content"
               ghLink="https://github.com/roy2392/chat-with-websites-agent"
               
             />
