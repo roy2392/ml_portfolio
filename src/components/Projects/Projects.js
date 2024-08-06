@@ -15,6 +15,7 @@ import loan from '../../Assets/Projects//loan.png';
 import book from '../../Assets/Projects//book.jpg';
 import cat from '../../Assets/Projects//cat.gif';
 import got from '../../Assets/Projects//GOT.png';
+import crew from '../../Assets/Projects//crew.png';
 
 function Projects() {
   return (
@@ -46,6 +47,19 @@ function Projects() {
               title="Chat-GPThrones - Chatbot with Game of Thrones Graph Knowledge-base"
               description="GenAI-powered chat application that leverages Neo4j to build a knowledge base graph from the Game of Thrones books."
               ghLink="https://github.com/roy2392/chat-gpthornes"
+              
+            />
+          </Col>
+
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={crew}
+              isBlog={false}
+              title="AI-Powered Research Agent Crew - LLM Agents-base company Swarm"
+              description="An AI-driven research assistant leveraging LangChain, BeautifulSoup, and multiple APIs for web scraping, content summarization, Google searches, and Airtable integration. This project orchestrates multiple specialized agents to collaboratively perform complex research tasks, streamline workflows, and manage interactions efficiently through a coordinated group chat system."
+              ghLink="https://github.com/roy2392/research-agent-crew"
               
             />
           </Col>
