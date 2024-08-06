@@ -51,7 +51,6 @@ function Projects() {
             />
           </Col>
 
-          </Col>
 
           <Col md={4} className="project-card">
             <ProjectCard
