@@ -16,6 +16,7 @@ import book from '../../Assets/Projects//book.jpg';
 import cat from '../../Assets/Projects//cat.gif';
 import got from '../../Assets/Projects//GOT.png';
 import crew from '../../Assets/Projects//crew.png';
+import aws from '../../Assets/Projects//aws.png';
 
 function Projects() {
   return (
@@ -109,8 +110,18 @@ function Projects() {
               imgPath={cat}
               isBlog={false}
               title="Image Classification: Cat vs. Wild Cat"
-              description="image classification project using Convolutional Neural Networks (CNNs) to distinguish between images of domestic cats and wild cats."
+              description="image classification project using CNN to distinguish between cats and wild cats."
               ghLink="https://github.com/roy2392/cat_or_wild_cat_image_classifier_ex?tab=readme-ov-file#image-classification-cat-vs-wild-cat"
+            />
+          </Col>
+
+          <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={aws}
+              isBlog={false}
+              title="Spam Detection Lambda Function"
+              description="This project implements a serverless spam detection system using AWS Lambda, S3, and PostgreSQL"
+              ghLink="https://github.com/roy2392/aws_batch_predictions_with_RDS"
             />
           </Col>
         </Row>
