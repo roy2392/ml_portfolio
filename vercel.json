@@ -8,5 +8,10 @@
         "buildCommand": "npm run build"
       }
     }
-  ]
+  ],
+  "env": {
+    "DISABLE_ESLINT_PLUGIN": "true",
+    "REACT_APP_DISABLE_STRICT_MODE": "true",
+    "GENERATE_SOURCEMAP": "false"
+  }
 } 
