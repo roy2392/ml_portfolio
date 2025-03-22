@@ -41,7 +41,7 @@ function App() {
           <Route path="/about" component={About} />
           <Route path="/resume" component={Resume} />
           <Route path="/articles" component={Articles} />
-          <Route path="*"><Redirect to="/" /></Route> />
+          <Route path="*"><Redirect to="/" /></Route>
         </Switch>
         <Footer />
       </div>
