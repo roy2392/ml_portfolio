@@ -10,8 +10,8 @@ import Articles from "./components/articles/articles";
 import {
   BrowserRouter as Router,
   Route,
-  Routes,
-  Navigate
+  Switch,
+  Redirect
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
@@ -35,14 +35,14 @@ function App() {
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/articles" element={<Articles />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-        </Routes>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/project" component={Projects} />
+          <Route path="/about" component={About} />
+          <Route path="/resume" component={Resume} />
+          <Route path="/articles" component={Articles} />
+          <Route path="*"><Redirect to="/" /></Route> />
+        </Switch>
         <Footer />
       </div>
     </Router>

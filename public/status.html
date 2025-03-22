@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #121212;
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            max-width: 600px;
+        }
+        h1 {
+            color: #4caf50;
+        }
+        .status-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #444;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Roey Zalta Portfolio Status</h1>
+        <div class="status-item">
+            <p><strong>Server Status:</strong> Online ✅</p>
+        </div>
+        <div class="status-item">
+            <p><strong>Static Content:</strong> Working ✅</p>
+        </div>
+        <div class="status-item">
+            <p><strong>Last Updated:</strong> <span id="timestamp"></span></p>
+        </div>
+        <a href="/" class="btn">Go to Portfolio</a>
+    </div>
+
+    <script>
+        // Set current timestamp
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html> 
