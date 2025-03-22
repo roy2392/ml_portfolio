@@ -9,6 +9,12 @@
       }
     }
   ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
   "env": {
     "DISABLE_ESLINT_PLUGIN": "true",
     "REACT_APP_DISABLE_STRICT_MODE": "true",
