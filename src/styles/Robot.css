@@ -1,0 +1,1230 @@
+/* Robot Container */
+.robot-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+  user-select: none;
+  perspective: 1500px;
+  background-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.robot-container::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(94, 23, 235, 0.05) 0%, rgba(35, 10, 85, 0.2) 70%);
+  z-index: 0;
+}
+
+/* Subtle light effect for the scene */
+.robot-container::after {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(159, 90, 253, 0.1) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.robot {
+  position: relative;
+  width: 220px;
+  height: 380px;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateY(0);
+  }
+  25% {
+    transform: translateY(-5px) rotateY(1deg);
+  }
+  50% {
+    transform: translateY(0) rotateY(0);
+  }
+  75% {
+    transform: translateY(5px) rotateY(-1deg);
+  }
+}
+
+/* Speech Bubble */
+.speech-bubble {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 20px;
+  min-width: 150px;
+  max-width: 220px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  border: 2px solid #4361EE;
+}
+
+.speech-bubble p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Robot Moods */
+.robot.happy .head {
+  background: linear-gradient(135deg, #4361EE, #4CC9F0);
+}
+
+.robot.happy .mouth-line {
+  height: 8px;
+  border-radius: 0 0 10px 10px;
+  transform: scaleX(1.2);
+}
+
+.robot.surprised .head {
+  background: linear-gradient(135deg, #7209B7, #3A0CA3);
+}
+
+.robot.surprised .mouth-line {
+  height: 12px;
+  border-radius: 50%;
+  transform: scaleY(1.5);
+}
+
+.robot.surprised .eye:after {
+  transform: scale(1.3);
+}
+
+/* Antenna */
+.antenna {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.antenna-tip {
+  width: 12px;
+  height: 12px;
+  background: #ff5e5e;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: blink-antenna 2s ease-in-out infinite;
+}
+
+.antenna-rod {
+  width: 3px;
+  height: 25px;
+  background: #333;
+  margin: 0 auto;
+}
+
+/* Head - Iron Man Helmet Style */
+.head {
+  position: relative;
+  width: 110px;
+  height: 140px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #6a14c3, #4c0b9d);
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.5),
+    inset 0 -5px 15px rgba(255, 255, 255, 0.2),
+    inset 0 5px 15px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+/* Gold faceplate - more realistic */
+.head::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to bottom, rgba(255, 200, 0, 0.9), rgba(255, 170, 0, 0.5));
+  border-radius: 50% 50% 0 0 / 60% 60% 0 0;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    100% 60%, 
+    85% 65%, 
+    75% 100%, 
+    25% 100%, 
+    15% 65%, 
+    0 60%
+  );
+  z-index: 2;
+}
+
+/* Helmet details */
+.head::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 25%;
+  background: #4b0a98;
+  border-radius: 10px;
+  clip-path: polygon(
+    0 0, 
+    100% 0, 
+    85% 100%, 
+    15% 100%
+  );
+}
+
+/* Helmet details - edge highlights */
+.head-detail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+  background: transparent;
+  box-shadow: inset 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+/* Helmet panel lines */
+.head-panel-lines {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 30%;
+  background: transparent;
+  z-index: 4;
+  border-radius: 5px;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 215, 0, 0.5),
+    inset 0 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+/* Eyes - Iron Man Style - more realistic */
+.eyes {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.eye-display {
+  width: 30px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.8),
+    inset 0 0 5px rgba(255, 255, 255, 0.2);
+  margin: 0 3px;
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.eye-display::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(255, 215, 0, 0.7) 40%, 
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 215, 0, 0.7) 60%, 
+    transparent 100%);
+  animation: scan 1.5s linear infinite;
+  filter: blur(1px);
+}
+
+/* Eye surrounding details */
+.eye-surround {
+  position: absolute;
+  top: 34%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 20px;
+  background: transparent;
+  z-index: 4;
+  border-radius: 10px;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 215, 0, 0.5),
+    0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(30px);
+  }
+}
+
+/* Neck - more detailed */
+.neck {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  margin: -10px auto 0;
+  background: linear-gradient(to bottom, #5812b8, #3c0a86);
+  border-radius: 10px;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+/* Neck details */
+.neck::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 5px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.4), transparent);
+  border-radius: 5px 5px 0 0;
+}
+
+/* Body - Iron Man Armor Style - more realistic */
+.body {
+  position: relative;
+  width: 160px;
+  height: 180px;
+  margin: -5px auto 0;
+  background: linear-gradient(135deg, #5c10af, #410896);
+  border-radius: 40px 40px 30px 30px;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 -5px 20px rgba(255, 255, 255, 0.2),
+    inset 0 5px 20px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+/* Body panel lines */
+.body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(to bottom, rgba(255, 215, 0, 0.1), transparent 30%),
+    linear-gradient(to right, transparent 20%, rgba(255, 215, 0, 0.1) 30%, transparent 40%),
+    linear-gradient(to right, transparent 60%, rgba(255, 215, 0, 0.1) 70%, transparent 80%);
+  border-radius: 40px 40px 30px 30px;
+  z-index: 1;
+}
+
+/* Body panel details */
+.body-panels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border-radius: 40px 40px 30px 30px;
+  z-index: 2;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 215, 0, 0.3),
+    inset 20px 0 60px rgba(0, 0, 0, 0.1),
+    inset -20px 0 60px rgba(0, 0, 0, 0.1);
+}
+
+/* Arc Reactor */
+.arc-reactor {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(230, 230, 255, 0.8) 70%, rgba(200, 200, 255, 0.6) 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(159, 90, 253, 0.6),
+    inset 0 0 15px rgba(159, 90, 253, 0.8);
+  z-index: 2;
+}
+
+/* Arc Reactor Inner Circle */
+.arc-reactor-inner {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, rgba(225, 185, 255, 1) 0%, rgba(185, 117, 255, 0.8) 50%, rgba(139, 49, 232, 0.6) 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.8),
+    inset 0 0 5px rgba(159, 90, 253, 0.8);
+  z-index: 3;
+  animation: pulse 2s infinite alternate;
+}
+
+/* Arc Reactor Center */
+.arc-reactor-center {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+  width: 15px;
+  height: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 220, 0, 0.7));
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  z-index: 4;
+  animation: pulse-center 2s infinite alternate;
+}
+
+@keyframes pulse-center {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+
+/* Gold armor accents - more detailed */
+.gold-accent {
+  position: absolute;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  box-shadow: 
+    inset 0 -2px 5px rgba(255, 255, 255, 0.3),
+    inset 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.gold-accent.chest-middle {
+  top: 37%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 60px;
+  clip-path: polygon(
+    50% 0,
+    100% 10%,
+    100% 100%,
+    0 100%,
+    0 10%
+  );
+}
+
+.gold-accent.chest-left {
+  top: 50%;
+  left: 20%;
+  width: 15px;
+  height: 40px;
+  transform: rotate(-10deg);
+  border-radius: 5px;
+}
+
+.gold-accent.chest-right {
+  top: 50%;
+  right: 20%;
+  width: 15px;
+  height: 40px;
+  transform: rotate(10deg);
+  border-radius: 5px;
+}
+
+/* Armor Plates - more detailed */
+.armor-plate {
+  position: absolute;
+  background: linear-gradient(135deg, #5a18b8, #4a0a96);
+  box-shadow: 
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2),
+    inset 0 2px 5px rgba(0, 0, 0, 0.5),
+    0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.armor-plate.chest-left {
+  top: 25%;
+  left: 25%;
+  width: 40px;
+  height: 60px;
+  border-radius: 10px 5px 5px 10px;
+  transform: rotate(-5deg);
+  clip-path: polygon(
+    0 0,
+    100% 10%,
+    100% 90%,
+    0 100%
+  );
+}
+
+.armor-plate.chest-right {
+  top: 25%;
+  right: 25%;
+  width: 40px;
+  height: 60px;
+  border-radius: 5px 10px 10px 5px;
+  transform: rotate(5deg);
+  clip-path: polygon(
+    0 10%,
+    100% 0,
+    100% 100%,
+    0 90%
+  );
+}
+
+/* Gold trim for chest plates */
+.armor-plate.chest-left::after,
+.armor-plate.chest-right::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8) 0%, rgba(255, 215, 0, 0.4) 10%, transparent 30%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 20%,
+    0 10%
+  );
+}
+
+.armor-plate.abdomen {
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+/* Gold accent on abdomen */
+.armor-plate.abdomen::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 20px;
+  background: linear-gradient(to top, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0.2));
+  border-radius: 5px;
+}
+
+/* Arms - Armored Style - more realistic */
+.arm {
+  position: absolute;
+  top: 30px;
+  width: 35px;
+  height: 140px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.arm.left {
+  left: -30px;
+  transform-origin: top center;
+  transform: rotate(5deg);
+}
+
+.arm.right {
+  right: -30px;
+  transform-origin: top center;
+  transform: rotate(-5deg);
+}
+
+/* Shoulder plate for a more Iron Man look */
+.shoulder-plate {
+  position: absolute;
+  top: -5px;
+  left: -10px;
+  width: 55px;
+  height: 25px;
+  background: linear-gradient(135deg, #6a14c3, #4c0b9d);
+  border-radius: 20px 20px 5px 5px;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+/* Shoulder gold trim */
+.shoulder-plate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.8), rgba(255, 215, 0, 0.3));
+  border-radius: 20px 20px 0 0;
+}
+
+.upper-arm {
+  width: 100%;
+  height: 65px;
+  background: linear-gradient(to right, #5812b8, #4c0b9d);
+  border-radius: 15px 15px 10px 10px;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Gold shoulder accent - more detailed */
+.upper-arm::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  width: 80%;
+  height: 20px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 5px;
+  left: 10%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Arm panel lines */
+.upper-arm::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.elbow {
+  width: 36px;
+  height: 30px;
+  margin: -15px 0 0 -0.5px;
+  background: #4f13a6;
+  border-radius: 50%;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2),
+    inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Elbow highlight */
+.elbow::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent);
+  border-radius: 50%;
+}
+
+/* Elbow detail */
+.elbow::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.3);
+}
+
+.lower-arm {
+  width: 90%;
+  height: 60px;
+  margin: -10px auto 0;
+  background: linear-gradient(to right, #5812b8, #4c0b9d);
+  border-radius: 10px 10px 15px 15px;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Gold accent on forearm - more detailed */
+.lower-arm::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Forearm panel lines */
+.lower-arm::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.wrist {
+  width: 32px;
+  height: 14px;
+  margin: -2px auto 0;
+  background: #4f13a6;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.hand {
+  width: 36px;
+  height: 28px;
+  margin: -2px auto 0;
+  background: linear-gradient(to bottom, #5812b8, #4c0b9d);
+  border-radius: 12px;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+  transition: transform 0.2s ease;
+  transform-origin: center center;
+}
+
+/* Hand panel lines */
+.hand::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Repulsor on hand - more realistic */
+.hand::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 215, 0, 0.7) 50%, rgba(255, 180, 0, 0.5) 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.8),
+    0 0 15px rgba(255, 215, 0, 0.5),
+    inset 0 0 5px rgba(255, 255, 255, 0.5);
+  opacity: 0.8;
+  transition: all 0.2s ease;
+}
+
+/* Active hand repulsor - enhanced */
+.hand.active::after {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 215, 0, 0.8) 50%, rgba(255, 180, 0, 0.6) 100%);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 1),
+    0 0 30px rgba(255, 215, 0, 0.9),
+    0 0 40px rgba(255, 215, 0, 0.6);
+  opacity: 1;
+}
+
+/* Legs - Armored Style - more realistic */
+.legs {
+  position: absolute;
+  bottom: -70px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leg {
+  width: 45px;
+}
+
+.hip {
+  width: 40px;
+  height: 20px;
+  background: #4f13a6;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Gold hip accent - more detailed */
+.hip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 8px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.upper-leg {
+  width: 35px;
+  height: 60px;
+  margin: 0 auto;
+  background: linear-gradient(to right, #5812b8, #4c0b9d);
+  border-radius: 15px 15px 10px 10px;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Thigh panel lines */
+.upper-leg::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Gold thigh accent - more detailed */
+.upper-leg::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.knee {
+  width: 38px;
+  height: 20px;
+  margin: -5px auto 0;
+  background: #4f13a6;
+  border-radius: 10px;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2),
+    inset 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+/* Knee highlight */
+.knee::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), transparent);
+  border-radius: 10px;
+}
+
+/* Knee detail */
+.knee::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.3);
+}
+
+/* Silver parts - matching the reference image */
+.silver-part {
+  position: absolute;
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0);
+  box-shadow: 
+    inset 0 -2px 5px rgba(255, 255, 255, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.2),
+    0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.silver-part.shin {
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(135deg, #e0e0e0, #b0b0b0);
+  border-radius: 8px;
+  z-index: 1;
+}
+
+/* Silver part details */
+.silver-part.shin::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.lower-leg {
+  width: 35px;
+  height: 65px;
+  margin: -5px auto 0;
+  background: linear-gradient(to right, #5812b8, #4c0b9d);
+  border-radius: 10px 10px 15px 15px;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Gold calf accent - more detailed */
+.lower-leg::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Calf panel lines */
+.lower-leg::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.ankle {
+  width: 38px;
+  height: 12px;
+  margin: -2px auto 0;
+  background: #4f13a6;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.foot {
+  width: 45px;
+  height: 15px;
+  margin: -2px auto 0;
+  background: linear-gradient(to bottom, #5812b8, #4c0b9d);
+  border-radius: 15px 15px 5px 5px;
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.3),
+    inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+/* Gold accent on foot - more detailed */
+.foot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to bottom, #ffd700, #ffa500);
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effects */
+.robot:hover {
+  animation-play-state: paused;
+}
+
+.robot:hover .eye-display::before {
+  animation-duration: 0.7s;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(255, 215, 0, 0.9) 40%, 
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 215, 0, 0.9) 60%, 
+    transparent 100%);
+}
+
+/* Hand hover effect - glow */
+.robot:hover .hand::after {
+  box-shadow: 
+    0 0 15px rgba(255, 215, 0, 1),
+    0 0 25px rgba(255, 215, 0, 0.6);
+  opacity: 1;
+}
+
+/* Robot Animation */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    opacity: 0.8;
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+    opacity: 1;
+  }
+}
+
+/* Repulsor animation for active state */
+@keyframes repulsorBlast {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 1), 
+      0 0 50px rgba(255, 215, 0, 0.6),
+      0 0 70px rgba(255, 215, 0, 0.3);
+  }
+  100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.hand.active::after {
+  animation: repulsorBlast 0.5s ease-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .robot-container {
+    height: 350px;
+  }
+  
+  .robot {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 480px) {
+  .robot-container {
+    height: 300px;
+  }
+  
+  .robot {
+    transform: scale(0.7);
+  }
+}
+
+/* Neck power indicator */
+.neck-power-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 4px;
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.4), rgba(255, 215, 0, 0.9), rgba(255, 215, 0, 0.4));
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* Body details - additional panel lines */
+.body-detail {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.3);
+  z-index: 3;
+}
+
+.body-detail.top-left {
+  top: 20%;
+  left: 20%;
+  transform: rotate(-5deg);
+}
+
+.body-detail.top-right {
+  top: 20%;
+  right: 20%;
+  transform: rotate(5deg);
+}
+
+.body-detail.bottom-left {
+  bottom: 30%;
+  left: 20%;
+  transform: rotate(-5deg);
+}
+
+.body-detail.bottom-right {
+  bottom: 30%;
+  right: 20%;
+  transform: rotate(5deg);
+}
+
+/* Arm panels */
+.arm-panel {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 25px;
+  background: transparent;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 215, 0, 0.3),
+    0 0 5px rgba(255, 215, 0, 0.2);
+}
+
+/* Forearm details */
+.forearm-detail {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.4), transparent);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Hand plate */
+.hand-plate {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 8px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.6), rgba(255, 215, 0, 0.2));
+  border-radius: 4px;
+  box-shadow: 0 0 3px rgba(255, 215, 0, 0.5);
+}
+
+/* Leg panel */
+.leg-panel {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 20px;
+  background: transparent;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 0 0 1px rgba(255, 215, 0, 0.3),
+    0 0 5px rgba(255, 215, 0, 0.2);
+}
+
+/* Calf detail */
+.calf-detail {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 15px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.4), transparent);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Foot detail */
+.foot-detail {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 5px;
+  background: linear-gradient(to bottom, rgba(255, 215, 0, 0.5), transparent);
+  border-radius: 5px 5px 0 0;
+} 
