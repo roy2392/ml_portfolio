@@ -7,9 +7,14 @@
         "installCommand": "npm install --legacy-peer-deps",
         "buildCommand": "npm run build"
       }
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/static/(.*)", "dest": "/static/$1" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
     { "src": "/manifest.json", "dest": "/manifest.json" },

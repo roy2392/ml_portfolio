@@ -14,6 +14,7 @@ import {
   Redirect
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import ChatWidget from "./components/Chat/ChatWidget";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -44,6 +45,7 @@ function App() {
           <Route path="*"><Redirect to="/" /></Route>
         </Switch>
         <Footer />
+        <ChatWidget />
       </div>
     </Router>
   );
