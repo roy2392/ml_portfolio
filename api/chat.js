@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
   }
 
   const payload = JSON.stringify({
-    model: "openai/gpt-4o-mini",
+    model: "gpt-4o-mini",
     messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
     max_tokens: 512,
     temperature: 0.7,
